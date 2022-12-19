@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MapsMarkers</string>
+    <string name="ok">Ok</string>
+    <string name="check_geo_permission">Проверьте разрешение на доступ к геолокации</string>
+    <string name="access_to_geo">Доступ к геолокации</string>
+    <string name="err_current_geo">Не удалось получить текущее местоположение: Проверьте доступ к геолокации на устройстве</string>
+    <string name="request_permission_geo_rationale">Пожалуйста, предоставьте доступ к геолокации чтобы мы могли сделать использование приложения удобным для Вас</string>
+    <string name="show_current_location">Показать текущее местоположение</string>
+    <string name="description">Описание</string>
+    <string name="coordinates">Координаты</string>
+    <string name="go">Перейти</string>
+    <string name="cancel">Отмена</string>
+    <string name="adding_marker">Добавление маркера</string>
+    <string name="add">Добавить</string>
+    <string name="marker">Маркер</string>
+    <string name="latitude">Широта</string>
+    <string name="longitude">Долгота</string>
+    <string name="edit">Редактировать</string>
+    <string name="remove">Удалить</string>
+    <string name="save">Сохранить</string>
+    <string name="list_of_markers">Список маркеров</string>
+    <string name="editing_marker">Редактирование маркера</string>
+</resources>

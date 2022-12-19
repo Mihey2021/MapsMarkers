@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MapsMarkers</string>
+    <string name="ok">Ok</string>
+    <string name="check_geo_permission">Check the permission to access geolocation</string>
+    <string name="access_to_geo">Access to geolocation</string>
+    <string name="err_current_geo">Couldn\'t get the current location: Check the geolocation access on the device</string>
+    <string name="request_permission_geo_rationale">Please provide access to geolocation so that we can make the use of the application convenient for you</string>
+    <string name="show_current_location">Show current location</string>
+    <string name="description">Description</string>
+    <string name="coordinates">Coordinates</string>
+    <string name="go">Go</string>
+    <string name="cancel">Cancel</string>
+    <string name="adding_marker">Adding a marker</string>
+    <string name="add">Add</string>
+    <string name="marker">Marker</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="save">Save</string>
+    <string name="list_of_markers">List of markers</string>
+    <string name="editing_marker">Editing a marker</string>
+</resources>

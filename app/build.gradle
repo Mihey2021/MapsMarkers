@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+    namespace 'ru.netology.mapsmarkers'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "ru.netology.mapsmarkers"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        if(rootProject.file("maps.properties").exists()) {
+            properties.load(rootProject.file("maps.properties").newDataInputStream())
+        }
+
+        buildConfigField 'String', 'MAP_API_KEY', properties.getProperty("MAPKIT_API_KEY", "")
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.yandex.android:maps.mobile:4.2.2-lite'
+    implementation "androidx.room:room-runtime:2.4.3"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.activity:activity-ktx:1.6.1"
+
+}
