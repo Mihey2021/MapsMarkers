@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -19,19 +18,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
-import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.map.*
 import com.yandex.mapkit.map.Map
 import com.yandex.mapkit.mapview.MapView
-import com.yandex.mapkit.user_location.UserLocationObjectListener
-import com.yandex.mapkit.user_location.UserLocationView
 import ru.netology.mapsmarkers.R
-import ru.netology.mapsmarkers.adapters.MarkersListAdapter
 import ru.netology.mapsmarkers.databinding.ActivityMainBinding
 import ru.netology.mapsmarkers.databinding.AddMarkerDialogBinding
 import ru.netology.mapsmarkers.dto.UserMarker
-import ru.netology.mapsmarkers.viewmodel.UserMarkerViewModel
 import ru.netology.mapsmarkers.extensions.setIcon
+import ru.netology.mapsmarkers.viewmodel.UserMarkerViewModel
 import java.io.Serializable
 
 enum class IntentKeys(val key: String) {
