@@ -1,67 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/postCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
-    android:background="#F6F3F3">
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    android:background="#F6F3F3"
+    tools:context=".ui.MarkersListActivity">
 
-    <ImageView
-        android:id="@+id/markerImage"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_user_marker"
-        android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp">
 
-    <TextView
-        android:id="@+id/descriptionText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/editButton"
-        app:layout_constraintStart_toEndOf="@id/markerImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/markerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/marker"
+            app:srcCompat="@drawable/ic_baseline_user_marker" />
 
-    <TextView
-        android:id="@+id/coordinatesText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/coordinates"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@id/editButton"
-        app:layout_constraintStart_toEndOf="@id/markerImage"
-        app:layout_constraintTop_toBottomOf="@id/descriptionText" />
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/editButton"
+            app:layout_constraintStart_toEndOf="@id/markerImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/removeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_delete_24"
-        android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        <TextView
+            android:id="@+id/coordinatesText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/coordinates"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@id/editButton"
+            app:layout_constraintStart_toEndOf="@id/markerImage"
+            app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
-    <ImageButton
-        android:id="@+id/editButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/removeButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        <ImageButton
+            android:id="@+id/removeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/remove"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
 
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/removeButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/edit"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

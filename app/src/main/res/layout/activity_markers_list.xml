@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.MarkersListFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btnCancel"
@@ -14,12 +14,12 @@
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/cancel" />
 
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible" />
-
-
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:visibility="visible"
+        tools:listitem="@layout/marker_item" />
 
 </LinearLayout>

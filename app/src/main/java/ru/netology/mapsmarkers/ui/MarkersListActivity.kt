@@ -5,15 +5,12 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ListView
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yandex.mapkit.geometry.Point
 import ru.netology.mapsmarkers.R
-import ru.netology.mapsmarkers.adapters.MarkersListAdapter
-import ru.netology.mapsmarkers.adapters.OnClickListener
-import ru.netology.mapsmarkers.adapters.OnEditListener
-import ru.netology.mapsmarkers.adapters.OnRemoveListener
+import ru.netology.mapsmarkers.adapters.*
 import ru.netology.mapsmarkers.databinding.ActivityMarkersListBinding
 import ru.netology.mapsmarkers.databinding.AddMarkerDialogBinding
 import ru.netology.mapsmarkers.dto.UserMarker
@@ -29,50 +26,47 @@ class MarkersListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val cancelBtn = binding.btnCancel
-        cancelBtn.setOnClickListener{
+        cancelBtn.setOnClickListener {
             this.finish()
         }
 
-        val markersListView = binding.listView
+        val markersRecyclerView = binding.recyclerView
 
         viewModel.userMarkersList.observe(this) { markersList ->
-            setupListAdapter(markersListView, markersList)
+            setupRecyclerViewAdapter(markersRecyclerView, markersList)
         }
 
     }
 
-    private fun setupListAdapter(listView: ListView, markersList: List<UserMarker>) {
-        val adapter = MarkersListAdapter(
-            markersList,
-            onRemoveListener = object : OnRemoveListener {
-                override fun invoke(marker: UserMarker) {
-                    removeMarker(marker)
-                }
-            },
-            onEditListener = object : OnEditListener {
-                override fun invoke(marker: UserMarker) {
-                    showEditMarkerDialog(Point(marker.latitude, marker.longitude), marker)
-                }
-            },
-            onClickListener = object : OnClickListener {
-                override fun invoke(marker: UserMarker) {
-                    val intent = Intent()
-                    setResult(
-                        Activity.RESULT_OK,
-                        intent.putExtra(IntentKeys.RESULT_KEY.key, marker)
-                    )
-                    this@MarkersListActivity.finish()
-                }
-            })
-        listView.adapter = adapter
-        listView.setOnItemClickListener { adapterView, view, position, id ->
-            val marker = adapter.getItem(position)
-            setResult(Activity.RESULT_OK, Intent().apply { putExtra("result_key", marker) })
-        }
+    private fun setupRecyclerViewAdapter(
+        recyclerView: RecyclerView,
+        markersList: List<UserMarker>
+    ) {
+        val adapter = MarkersListRecyclerViewAdapter(object : MarkersListActionListener {
+            override fun onRemoveListener(id: Long) {
+                removeMarker(id)
+            }
+
+            override fun onEditListener(marker: UserMarker) {
+                showEditMarkerDialog(Point(marker.latitude, marker.longitude), marker)
+            }
+
+            override fun onItemClickListener(marker: UserMarker) {
+                val intent = Intent()
+                setResult(
+                    Activity.RESULT_OK,
+                    intent.putExtra(IntentKeys.RESULT_KEY.key, marker)
+                )
+                this@MarkersListActivity.finish()
+            }
+        })
+
+        recyclerView.adapter = adapter
+        adapter.submitList(markersList)
     }
 
-    private fun removeMarker(marker: UserMarker) {
-        viewModel.removeMarkerById(marker.id)
+    private fun removeMarker(id: Long) {
+        viewModel.removeMarkerById(id)
     }
 
     @SuppressLint("SetTextI18n")
